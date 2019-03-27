@@ -22,11 +22,14 @@
                         <a>退出</a>
                         <strong>|</strong>
                     </span>
-                    <a href="" class="">
+                    <!-- <a href="" class=""> -->
+                      <router-link to="/cart">
                         <i class="iconfont icon-cart"></i>购物车(
                         <span id="shoppingCartCount">
                             <span>4</span>
-                        </span>)</a>
+                        </span>)
+                        </router-link>
+                        <!-- </a> -->
                 </div>
             </div>
         </div>
@@ -37,9 +40,11 @@
                 <div id="menu2" class="nav-box menuhd">
                     <ul>
                         <li class="index">
-                            <a href="#" class="">
+                            <!-- <a href="#" class=""> -->
+                              <router-link to="/index">
                                 <span class="out" style="top: 0px;">首页</span>
-                            </a>
+                                </router-link>
+                            <!-- </a> -->
                         </li>
                         <li class="news">
                             <a href="#" class="">
@@ -81,7 +86,53 @@
     </div>
 
 
- <div class="footer">
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<router-view></router-view> 
+<div class="footer">
                 <div class="section">
                     <div class="foot-nav">
                         <a href="">关于我们</a>
