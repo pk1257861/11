@@ -19,11 +19,17 @@ axios.defaults.baseURL='http://111.230.232.110:8899'
 import VueRouter from "vue-router"
 Vue.use(VueRouter)
 
+
+
 //导入组件
 import index from './components/index.vue'
 import cart from './components/cart.vue'
 import detail from './components/detail.vue'
 import detail1 from './components/detail1.vue'
+import userContainer from './components/userContainer'
+import userIndex from './components/userIndex'
+import userOrder from './components/userOrder'
+import userDetail from './components/userDetail'
 
 //设置全局过滤器
 import moment from 'moment'
@@ -53,8 +59,29 @@ let routes=[
 },{
   path:'/detail1/:id',
   component:detail1
+},{
+  path:'/user',
+  component:userContainer,
+   
+  children:[
+    {
+      path:'Index',
+    component:userIndex
+    },
+    {
+      path:'Order',
+    component:userOrder
+    },
+    {
+      path:'Detail',
+    component:userDetail
+    },
+    
+  ]
 }
 ]
+
+
 
 let router =new VueRouter({
   routes

@@ -109,42 +109,13 @@
           <!--幻灯片-->
           <div class="left-705">
             <div class="banner-img">
-              <div id="focus-box" class="focus-box">
-                <ul class="slides">
-                  <li
-                    class
-                    style="width: 100%;height:100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"
-                  >
-                    <a href="/goods.html">
-                      <img
-                        style="width: 100%;height:100%;"
-                        src="http://39.108.135.214:8899/imgs/SJ4EgwosX0wTqvyAvhtFGT1w.jpg"
-                        draggable="false"
-                      >
-                    </a>
-                  </li>
-                  <li
-                    style="width: 100%;height:100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;"
-                    class="flex-active-slide"
-                  >
-                    <a href="/goods.html">
-                      <img
-                        style="width: 100%;height:100%;"
-                        src="http://39.108.135.214:8899/upload/201504/20/thumb_201504200314272543.jpg"
-                        draggable="false"
-                      >
-                    </a>
-                  </li>
-                </ul>
-                <ol class="flex-control-nav flex-control-paging">
-                  <li>
-                    <a class>1</a>
-                  </li>
-                  <li>
-                    <a class="flex-active">2</a>
-                  </li>
-                </ol>
-              </div>
+               <el-carousel height='341px'>
+          <el-carousel-item v-for="(item,index) in sliderlist" :key="index">
+          <router-link class="slider-a" :to="'/detail/'+item.id">
+          <img class="slider-img" :src="item.img_url" alt="">
+          </router-link>
+      </el-carousel-item>
+      </el-carousel>
             </div>
           </div>
           <!--/幻灯片-->
