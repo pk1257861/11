@@ -160,11 +160,7 @@
                                             <!-- </a> -->
                                         </div>
                                         <div class="txt-box">
-                                        
-                                        <router-link :to='"/detail/"+item.id'>
-                                            {{item.title}}
-                                         
-                                            </router-link>
+                                            <a href="#/site/goodsinfo/90" class="">{{item.title}}</a>
                                             <span>{{item.add_time}}</span>
                                         </div>
                                     </li>
@@ -180,25 +176,25 @@
 </template>
 
 <script>
-// import axios from "axios";
+    import axios from "axios";
 export default {
-    name:'detail',
-    data() {
-        return {
-            goodsinfo:{},
-            hotgoodslist:{},
-            index:1
-        }
-    },
-    created() {
-        this.$axios.get(`/site/goods/getgoodsinfo/${this.$route.params.id}`).then(res=>{
-            console.log(res);
-            
-            this.goodsinfo=res.data.message.goodsinfo
-            this.hotgoodslist=res.data.message.hotgoodslist
-        })
-    },
+         name:'detail1',
+         data() {
+    return {
+       goodsinfo:{},
+       hotgoodslist:{},
+       index:1
+    }
+},
+  created() {
+      axios.get(`http://111.230.232.110:8899/site/goods/getgoodsinfo/${this.$route.params.id}`).then(res=>{
+
+          this.goodsinfo=res.data.message.goodsinfo
+          this.hotgoodslist=res.data.message.hotgoodslist
+      })
+  },
 }
+
 </script>
 
 <style>
