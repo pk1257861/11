@@ -13,7 +13,8 @@
                 <div class="wrap-box">
                     <div class="left-925">
                         <div class="goods-box clearfix">
-                            <div class="pic-box"></div>
+                            <div class="pic-box">
+                            <img :src="'http://111.230.232.110:8899/'+goodsinfo.img_url" alt="" style="border:1px solid red"> </div>
                             <div class="goods-spec">
                                 <h1>{{goodsinfo.title}}</h1>
                                 <p class="subtitle">{{goodsinfo.sub_title}}</p>
@@ -40,23 +41,7 @@
                                         <dt>购买数量</dt>
                                         <dd>
                                             <div class="stock-box">
-                                                <div class="el-input-number el-input-number--small">
-                                                    <span role="button" class="el-input-number__decrease is-disabled">
-                                                        <i class="el-icon-minus"></i>
-                                                    </span>
-                                                    <span role="button" class="el-input-number__increase">
-                                                        <i class="el-icon-plus"></i>
-                                                    </span>
-                                                    <div class="el-input el-input--small">
-                                                        <!---->
-                                                        <input autocomplete="off" size="small" type="text" rows="2" max="60"
-                                                            min="1" validateevent="true" class="el-input__inner" role="spinbutton"
-                                                            aria-valuemax="60" aria-valuemin="1" aria-valuenow="1" aria-disabled="false">
-                                                        <!---->
-                                                        <!---->
-                                                        <!---->
-                                                    </div>
-                                                </div>
+                                                <el-input-number v-model="num1" :step="2"  :min="1" :max="10"></el-input-number>
                                             </div>
                                             <span class="stock-txt">
                                                 库存
@@ -165,7 +150,7 @@
                                             {{item.title}}
                                          
                                             </router-link>
-                                            <span>{{item.add_time}}</span>
+                                            <span>{{item.add_time | globlaFormatTime('YYYY年MM月DD日') }}</span>
                                         </div>
                                     </li>
                                  
@@ -187,20 +172,35 @@ export default {
         return {
             goodsinfo:{},
             hotgoodslist:{},
-            index:1
+            index:1,
+            num1:1
         }
     },
-    created() {
-        this.$axios.get(`/site/goods/getgoodsinfo/${this.$route.params.id}`).then(res=>{
+    methods: {
+        pk(){
+                 this.$axios.get(`/site/goods/getgoodsinfo/${this.$route.params.id}`).then(res=>{
             console.log(res);
             
             this.goodsinfo=res.data.message.goodsinfo
             this.hotgoodslist=res.data.message.hotgoodslist
         })
+        }
+    },
+    created() {
+       this.pk()
+    },
+    //侦听器
+    watch: {
+        $route(oldvalue,newvalue){
+            this.pk()
+        }
     },
 }
 </script>
 
 <style>
-
+  .pic-box>img{
+     width: 340px;
+        height: 340px;
+     } 
 </style>

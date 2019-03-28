@@ -2,6 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 
 
+//饿了么ui导入
+//导入模块 
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+Vue.use(ElementUI)
+
 //全局引入样式
 import  './assets/statics/site/css/style.css'
 
@@ -19,7 +25,15 @@ import cart from './components/cart.vue'
 import detail from './components/detail.vue'
 import detail1 from './components/detail1.vue'
 
-
+//设置全局过滤器
+import moment from 'moment'
+Vue.filter('globlaFormatTime',function (value,fmtTemplate) {
+  if (fmtTemplate) {
+    return moment(value).format(fmtTemplate)
+  }else{
+    return moment(value).format("YYYY-MM-DD")
+  }
+})
 
 //规则
 let routes=[
